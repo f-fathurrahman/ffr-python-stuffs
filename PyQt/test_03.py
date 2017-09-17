@@ -16,8 +16,16 @@ class Example(QWidget):
         #
         self.show()
 
+class Example02(QWidget):
+    def __init__(self,title='This is a title'):
+        super().__init__()
+        self.resize(300, 300)
+        self.setWindowTitle(title)
+        self.show()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Example()
+    ex02 = Example02('Made by ffr')
     sys.exit(app.exec_())
