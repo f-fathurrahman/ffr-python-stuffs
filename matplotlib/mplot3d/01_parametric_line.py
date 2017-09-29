@@ -12,5 +12,5 @@ z = x + np.sin(y)
 
 ax.plot(x, y, z);
 
-plt.savefig("test_plot3d.png", dpi=300)
+plt.savefig("01.png", dpi=300)
 plt.show()
