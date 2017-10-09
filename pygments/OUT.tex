@@ -5,6 +5,11 @@
 
 
 
+\definecolor{mygray}{rgb}{0.95,0.95,0.95}
+\usepackage{mdframed}
+\BeforeBeginEnvironment{Verbatim}{\begin{mdframed}[backgroundcolor=mygray]}
+\AfterEndEnvironment{Verbatim}{\end{mdframed}}
+
 
 \makeatletter
 \def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
@@ -147,7 +152,9 @@ Implement the equation \ref{eq:fabulous}
 \begin{Verbatim}[commandchars=\\\{\}]
   \PY{n}{alpha} \PY{o}{=} \PY{n}{beta} \PY{o}{+} \PY{p}{(}\PY{n}{x}\PY{o}{**}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{l+m+mf}{1.d0}\PY{p}{)}\PY{o}{/}\PY{p}{(}\PY{n}{s} \PY{o}{\PYZhy{}} \PY{n}{t}\PY{o}{**}\PY{l+m+mi}{2}\PY{p}{)}
 \PY{k}{END }\PY{k}{SUBROUTINE}
+
 \end{Verbatim}
+OK, that's all folks!
 
 \end{document}
 

@@ -10,6 +10,11 @@ PRELINE = '''
 \\documentclass[a4paper]{article}
 \\usepackage{fancyvrb}
 \\usepackage{xcolor}\n\n
+
+\\definecolor{mygray}{rgb}{0.95,0.95,0.95}
+\\usepackage{mdframed}
+\\BeforeBeginEnvironment{Verbatim}{\\begin{mdframed}[backgroundcolor=mygray]}
+\\AfterEndEnvironment{Verbatim}{\\end{mdframed}}
 '''
 
 MIDLINE = '''

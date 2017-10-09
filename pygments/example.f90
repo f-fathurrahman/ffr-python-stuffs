@@ -22,3 +22,5 @@ SUBROUTINE test(x,y,s,t)
 !!> Implement the equation \ref{eq:fabulous}
   alpha = beta + (x**2 - 1.d0)/(s - t**2)
 END SUBROUTINE
+
+!!> OK, that's all folks!
