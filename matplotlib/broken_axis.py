@@ -57,4 +57,4 @@ ax2.plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
 # ax and ax2 via f.subplots_adjust(hspace=...) or plt.subplot_tool(),
 # the diagonal lines will move accordingly, and stay right at the tips
 # of the spines they are 'breaking'
-plt.savefig('broken_axis')
+plt.savefig('broken_axis.png')
