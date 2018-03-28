@@ -1,10 +1,11 @@
 import numpy as np
+import sys
 
 # Set random seed
 np.random.seed(1234)
 
 # Generate random labels: integer number 0 or 1, with size 5
-Npoints = 10
+Npoints = int( sys.argv[1] )
 y_true = np.random.randint(0, 2, size=Npoints)
 
 # predicted labels
