@@ -1,0 +1,51 @@
+% Preview source code
+
+%% LyX 2.1.4 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ % this default might be overridden by plain title style
+ \newcommand\makebeamertitle{\frame{\maketitle}}%
+ % (ERT) argument for the TOC
+ \AtBeginDocument{%
+   \let\origtableofcontents=\tableofcontents
+   \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+   \def\gobbletableofcontents#1{\origtableofcontents}
+ }
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+
+\title{Dasar Pemrograman Python}
+\author{Fadjar Fathurrahman}
+\institute{
+Program Studi Teknik Fisika \\
+Divisi Komputasi Pusat Penelitian Nanosains dan Nanoteknologi \\
+Institut Teknologi Bandung
+}
+\date{7 April 2018}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Pemrograman Python}
+
+Python banyak digunakan di ...
+
+Kelebihan dan kekurangan Python ...
+
+\end{frame}
+
+
+\end{document}
+
