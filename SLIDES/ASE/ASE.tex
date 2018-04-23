@@ -17,8 +17,8 @@
 \definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
 \usepackage{mdframed}
 
-\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
-\AfterEndEnvironment{minted}{\end{mdframed}}
+%\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
+%\AfterEndEnvironment{minted}{\end{mdframed}}
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
@@ -69,10 +69,7 @@ Mempermudah \textit{scripting}
 
 \begin{pythoncode}
 from ase import Atoms
-atoms = Atoms("Ni4", [(0, 0, 0),
-                      (1.45, 0, 0),
-                      (1, 1.5, 0),
-                      (1.5, 1.5, 0)],
+atoms = Atoms("Ni4", [(0, 0, 0), (2.0, 0, 0), (0.0, 2.0, 0), (2.0, 2.0, 0)],
                cell=[5, 5, 5])
 atoms.set_pbc([True,True,True])  # anggap sebagai struktur periodik
 \end{pythoncode}
@@ -98,8 +95,37 @@ ase.visualize(atoms)
 
 Simpan hasil visualisasi dalam format EPS (\textit{encapsulated postscript})
 \begin{pythoncode}
-ase.visualize.write("Ni4.pdf", atoms, format="eps")
+ase.visualize.write("Ni4.eps", atoms, format="eps")
+# ase.io.write (dengan signature fungsi yang sama) juga dapat digunakan
 \end{pythoncode}
+
+{\centering
+\includegraphics[scale=0.4]{Ni4.eps}
+\par}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Contoh}
+
+\begin{pythoncode}
+from ase import Atoms, Atom
+from ase.io import write
+b = 7.1
+atoms = Atoms([Atom("C", [0., 0., 0.]),
+               Atom("O", [1.1, 0., 0.])],
+               cell=[[b, b, 0.],
+                     [b, 0., b],
+                     [0., b, b]])
+print("Volume = {0:1.0f} Ang^3".format(atoms.get_volume()))
+atoms.center()        # translasi atoms ke tengah sel
+write("CO-in-fcc.eps", atoms, show_unit_cell=2)
+\end{pythoncode}
+
+{\centering
+\includegraphics[scale=0.4]{CO-in-fcc.eps}
+\par}
 
 \end{frame}
 
