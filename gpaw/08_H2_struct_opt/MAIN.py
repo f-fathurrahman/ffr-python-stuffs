@@ -27,7 +27,7 @@ print("d0 = %18.10f angstrom" % d0)
 calc.write("H2.gpw")
 
 relax = QuasiNewton( atoms, logfile="relax.qn.log" )
-relax.run()
+relax.run(fmax=0.05)
 
 ene = atoms.get_potential_energy()
 d0 = atoms.get_distance(0,1)
