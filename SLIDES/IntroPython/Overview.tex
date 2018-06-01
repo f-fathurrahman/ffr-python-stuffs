@@ -1,0 +1,152 @@
+\section{Overview}
+
+\begin{frame}
+\frametitle{Pemrograman Python}
+
+Python banyak digunakan di ...
+
+Kelebihan dan kekurangan Python ...
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Shell interaktif dan script}
+
+\begin{itemize}
+
+  \item Kode program Python ditulis dalam file teks dengan ekstensi \texttt{.py}.
+  Untuk menjalankannya kita dapat menggunakan perintah berikut pada terminal:
+\begin{bashcode}
+python nama_script.py
+\end{bashcode}
+
+  \item Shell interaktif: Dapat dijalankan dengan mengetikkan \texttt{python} pada
+  terminal. Pada terminal akan muncul tampilan sebagai berikut.
+\begin{textcode}
+Python 3.6.1 |Anaconda custom (64-bit)| (default, May 11 2017, 13:09:58) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+\end{textcode}
+  Kode Python kemudian dapat diketikkan setelah prompt \texttt{>>>}.
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Contoh penggunaan shell interaktif}
+
+\begin{textcode}
+Python 3.6.1 |Anaconda custom (64-bit)| (default, May 11 2017, 13:09:58) 
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 2 + 4
+6
+>>> b = 3*2 - 1.1
+>>> c = b/2;
+>>> print("b = ", b, " c = ", c)
+b =  4.9  c =  2.45
+>>> exit()
+\end{textcode}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{\texttt{Ipython}: Enhanced Interactive Python}
+
+\begin{textcode}
+Python 3.6.1 |Anaconda custom (64-bit)| (default, May 11 2017, 13:09:58) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 5.4.1 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+In [1]: 1.1 + 2.3
+Out[1]: 3.4
+
+In [2]: %quickref
+
+In [3]: pwd
+Out[3]: '/home/efefer'
+\end{textcode}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Ipython Notebook}
+
+Demo
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Numpy: notasi array mirip dengan MATLAB}
+
+Demo
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Matplotlib: plotting}
+  
+Demo
+  
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{SciPy:}
+
+Demo
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{sympy}
+  
+Demo
+  
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Lainnya}
+    
+GUI: Tk, PyGTK, PyQt
+
+Web framework
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Contoh script Python}
+
+\begin{pythoncode}
+# Contoh komentar (perbaris)
+
+from __future__ import print_function # komentar jg bisa di sini
+
+"""
+Fungsi sederhana: menerima input dua bilangan dan mengembalikan
+hasil penjumlahan dua bilangan tersebut
+"""
+def myfunc(a,b):
+    c = a + b
+    return 2*c
+
+print('%d + %d = %d' % ( a, b, myfunc(a,b) ))
+\end{pythoncode}
+
+
+\end{frame}
