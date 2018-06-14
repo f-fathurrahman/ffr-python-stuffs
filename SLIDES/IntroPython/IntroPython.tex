@@ -11,13 +11,15 @@
 
 \usepackage{minted}
 \newminted{python}{breaklines,fontsize=\footnotesize,texcomments=true}
+%\newminted{ipython}{breaklines,fontsize=\footnotesize,texcomments=true}
+\newminted{pycon}{breaklines,fontsize=\footnotesize,texcomments=true}
 \newminted{bash}{breaklines,fontsize=\footnotesize,texcomments=true}
 \newminted{text}{breaklines,fontsize=\footnotesize,texcomments=true}
 
 \definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
 \usepackage{mdframed}
 
-\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg]}
+\BeforeBeginEnvironment{minted}{\begin{mdframed}[backgroundcolor=mintedbg,hidealllines=true]}
 \AfterEndEnvironment{minted}{\end{mdframed}}
 
 \setcounter{secnumdepth}{3}

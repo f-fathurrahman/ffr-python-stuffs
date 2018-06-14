@@ -1,6 +1,98 @@
 \section{Pemrograman Python}
 
 \begin{frame}[fragile]
-\frametitle{Komentar}
+\frametitle{Konvensi}
+
+Potongan kode Python pada bagian ini dapat sebagian dimaksudkan untuk
+ditulis dalam file (script) sedangkan kode yang lain dapat langsung
+diketik di Python atau IPython console.
+
+Contoh kode Python dalam console:
+\begin{pyconcode}
+>>> 4 + 5
+9
+>>> 4.1 + 4.2
+8.3
+>>> 4.1*2
+8.2
+>>> 4/2
+2.0
+>>> 4/3
+1.3333333333333333
+\end{pyconcode}
 
 \end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Kode sumber Python}
+
+Kode sumber Python ditulis dalam file teks dengan ekstensi \texttt{.py}.
+
+Dari terminal dapat digunakan perintah
+\begin{bashcode}
+python namafile.py
+\end{bashcode}
+
+Sebagai contoh, buatlah file dengan nama \texttt{halo.py} atau nama lain
+yang Anda suka dengan isi sebagai berikut:
+\begin{pythoncode}
+nama = "efefer"
+print("Halo, nama saya adalah ", nama)
+\end{pythoncode}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Komentar}
+
+Komentar dapat ditulis dengan beberapa cara:
+\begin{pythoncode}
+# Komentar dalam satu baris
+# Komentar lagi
+
+"""
+Komentar yang dapat digunakan dalam lebih dari satu baris.
+Juga dapat diinterpretasikan sebagai string.
+"""
+\end{pythoncode}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Variabel dan tipe data}
+
+Variabel dapat didefinisikan dengan menggunakan operator penugasan
+(assigment) \texttt{=}
+
+Tipe variabel dalam Python tidak perlu dituliskan. Python akan menebak
+tipe data tersebut secara otomatis.
+
+\begin{pyconcode}
+>>> a = 2.4;  # gunakan tanda a; untuk mencegah penulisan output
+>>> b = 3;
+>>> type(a) # type: mengetahui tipe dari suatu variabel
+<class 'float'>
+>>> type(b)
+<class 'int'>
+\end{pyconcode}
+
+\begin{pyconcode}
+>>> 5 // 3
+1
+>>> 5.0 // 3.0
+1.0
+>>> 10 % 3
+1
+>>> 2**4
+16
+>>> 2.0**4
+16.0
+\end{pyconcode}
+
+\end{frame}
+
+
+
