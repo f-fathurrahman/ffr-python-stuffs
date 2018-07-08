@@ -4,17 +4,17 @@ init_printing(use_unicode=True)
 
 x, y = symbols("x y")
 
-expr = x + 2*y + 3*x
-print(expr)
+eksp = x + 2*y + 3*x
+print(eksp)
 
-expr = (2*x + 3)*x - 2*x**2
-print(expr)
+eksp = (2*x + 3)*x - 2*x**2
+print(eksp)
 
-pprint(expand(expr))
+pprint(expand(eksp))
 
-expr =(2*x+1)**2 * (3*y - 1)
-pprint( expr )
-pprint( expand(expr) )
-pprint( collect(expand(expr),x) )
-pprint( factor(expand(expr) ) )
+eksp =(2*x+1)**2 * (3*y - 1)
+pprint( eksp )
+pprint( expand(eksp) )
+pprint( collect(expand(eksp),x) )
+pprint( factor(expand(eksp) ) )
 

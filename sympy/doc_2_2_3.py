@@ -8,22 +8,22 @@ init_printing(use_unicode=True)
 x, t, z, nu = symbols("x t z nu")
 
 # Calculate derivative
-expr = diff( sin(x)*exp(x), x )
-pprint(expr)
+eksp = diff( sin(x)*exp(x), x )
+pprint(eksp)
 
 # Calculate integral
-expr = integrate( exp(x)*sin(x) + exp(x)*cos(x), x )
-pprint(expr)
+eksp = integrate( exp(x)*sin(x) + exp(x)*cos(x), x )
+pprint(eksp)
 
 # Another integral
-expr = Integral( sin(x**2), (x, -oo, oo) )
-pprint(expr)
-pprint(expr.doit())
+eksp = Integral( sin(x**2), (x, -oo, oo) )
+pprint(eksp)
+pprint(eksp.doit())
 
 # Calculate limit
-expr = Limit( sin(x)/x, x, 0 )
-pprint(expr)
-pprint(expr.doit())
+eksp = Limit( sin(x)/x, x, 0 )
+pprint(eksp)
+pprint(eksp.doit())
 
 # Defining an equation
 eq = Eq( x**2 - 2, 0 )
