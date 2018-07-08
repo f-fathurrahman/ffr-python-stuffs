@@ -56,7 +56,7 @@ print( pd.Series( {2:"a", 1:"b", 3:"c"}, index=[3,2]) )
 # objects.
 
 area_dict = {"California" : 423967, "Texas" : 695662, "New York" : 141297,
-             "Florida" : 170312, "Illiois" : 149995}
+             "Florida" : 170312, "Illinois" : 149995}
 area = pd.Series(area_dict)
 
 states = pd.DataFrame( {"population" : population,
@@ -64,4 +64,9 @@ states = pd.DataFrame( {"population" : population,
 print(states)
 print(states.index)
 print(states.columns)
+
+print("states[\"area\"] = ")
+print(states["area"])
+
+
 
