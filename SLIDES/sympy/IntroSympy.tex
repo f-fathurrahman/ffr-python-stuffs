@@ -1,0 +1,89 @@
+\documentclass[bahasa,10pt]{beamer}
+
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\setbeamersize{text margin left=5pt, text margin right=5pt}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+%\setmainfont{Linux Libertine O}
+%\setmainfont{FreeSerif}
+%\setmonofont{Fira Mono}
+\setmonofont{FreeMono}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{braket}
+
+\usepackage{minted}
+\newminted{python}{breaklines,fontsize=\footnotesize,texcomments=true}
+\newminted{bash}{breaklines,fontsize=\footnotesize,texcomments=true}
+\newminted{text}{breaklines,fontsize=\footnotesize,texcomments=true}
+
+\definecolor{mintedbg}{rgb}{0.95,0.95,0.95}
+\usepackage{mdframed}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ % this default might be overridden by plain title style
+ \newcommand\makebeamertitle{\frame{\maketitle}}%
+ % (ERT) argument for the TOC
+ \AtBeginDocument{%
+   \let\origtableofcontents=\tableofcontents
+   \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+   \def\gobbletableofcontents#1{\origtableofcontents}
+ }
+
+\makeatother
+
+\usepackage{babel}
+
+\begin{document}
+
+
+\title{Pengenalan ASE (Atomic Simulation Environment)}
+\author{Fadjar Fathurrahman}
+\institute{
+Program Studi Teknik Fisika \\
+Divisi Komputasi Pusat Penelitian Nanosains dan Nanoteknologi \\
+Institut Teknologi Bandung
+}
+\date{23 April 2018}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Perhingan Simbolik dengan SymPy}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Limit}
+
+Contoh perhitungan
+
+\begin{minted}{text}
+⎡⎛            ⎡⎡   -2    ⎤⎤⎞  ⎛              ⎡⎡   -2    ⎤⎤⎞⎤
+⎢⎜            ⎢⎢─────────⎥⎥⎟  ⎜              ⎢⎢─────────⎥⎥⎟⎥
+⎢⎜3   √17     ⎢⎢  √17   1⎥⎥⎟  ⎜  √17   3     ⎢⎢  1   √17⎥⎥⎟⎥
+⎢⎜─ + ───, 1, ⎢⎢- ─── - ─⎥⎥⎟, ⎜- ─── + ─, 1, ⎢⎢- ─ + ───⎥⎥⎟⎥
+⎢⎜2    2      ⎢⎢   2    2⎥⎥⎟  ⎜   2    2     ⎢⎢  2    2 ⎥⎥⎟⎥
+⎢⎜            ⎢⎢         ⎥⎥⎟  ⎜              ⎢⎢         ⎥⎥⎟⎥
+⎣⎝            ⎣⎣    1    ⎦⎦⎠  ⎝              ⎣⎣    1    ⎦⎦⎠⎦
+\end{minted}
+
+\end{frame}
+
+
+
+
+
+\end{document}
+
