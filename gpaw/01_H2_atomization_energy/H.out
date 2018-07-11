@@ -6,16 +6,16 @@
  |___|_|             
 
 User:   efefer@efefer-X301A
-Date:   Wed Apr 11 00:26:41 2018
+Date:   Wed Jul 11 11:34:55 2018
 Arch:   x86_64
-Pid:    16222
-Python: 3.6.1
+Pid:    15798
+Python: 3.6.6
 gpaw:   /home/efefer/mysoftwares/anaconda3/lib/python3.6/site-packages/gpaw
 _gpaw:  /home/efefer/mysoftwares/anaconda3/lib/python3.6/site-packages/
        _gpaw.cpython-36m-x86_64-linux-gnu.so
-ase:    /home/efefer/mysoftwares/anaconda3/lib/python3.6/site-packages/ase (version 3.13.0)
-numpy:  /home/efefer/mysoftwares/anaconda3/lib/python3.6/site-packages/numpy (version 1.12.1)
-scipy:  /home/efefer/mysoftwares/anaconda3/lib/python3.6/site-packages/scipy (version 1.0.0)
+ase:    /home/efefer/mysoftwares/anaconda3/lib/python3.6/site-packages/ase-3.16.0-py3.6.egg/ase (version 3.16.0)
+numpy:  /home/efefer/mysoftwares/anaconda3/envs/bob_py3/lib/python3.6/site-packages/numpy (version 1.13.1)
+scipy:  /home/efefer/mysoftwares/anaconda3/envs/bob_py3/lib/python3.6/site-packages/scipy (version 0.19.1)
 units:  Angstrom and eV
 cores:  1
 
@@ -111,7 +111,7 @@ Hamiltonian:
  
 
 Memory estimate:
-  Process memory now: 90.12 MiB
+  Process memory now: 94.27 MiB
   Calculator: 70.75 MiB
     Density: 49.11 MiB
       Arrays: 24.33 MiB
@@ -182,29 +182,29 @@ Effective grid spacing dv^(1/3) = 0.2222
 
                      log10-error:    total        iterations:
            time      wfs    density  energy       fermi  poisson  magmom
-iter:   1  00:26:46  +4.23   +inf    -1.036069    0               +1.0000
-iter:   2  00:26:46  -1.81   +inf    -1.073088    0               +1.0000
-iter:   3  00:26:46  -4.37   +inf    -1.073414    0               +1.0000
-iter:   4  00:26:49  -1.92  -1.14     2.987062    0               +1.0000
-iter:   5  00:26:51  -1.46  -1.12     6.989947    0               +1.0000
-iter:   6  00:26:54  -0.92  -0.79     0.132385    0               +1.0000
-iter:   7  00:26:56  -2.67  -1.92    -1.053530    0               +1.0000
-iter:   8  00:26:58  -2.65  -1.97    -1.022293    0               +1.0000
-iter:   9  00:27:01  -2.46  -1.58    -1.054256    0               +1.0000
-iter:  10  00:27:03  -4.15  -2.97    -1.063302    0               +1.0000
-iter:  11  00:27:05  -4.86  -2.57    -1.065746    0               +1.0000
-iter:  12  00:27:08  -4.89  -2.79    -1.067844    0               +1.0000
-iter:  13  00:27:10  -5.40  -3.17    -1.069175    0               +1.0000
-iter:  14  00:27:13  -5.79  -3.55    -1.070444    0               +1.0000
-iter:  15  00:27:15  -6.19  -4.29    -1.070051    0               +1.0000
-iter:  16  00:27:18  -7.65  -4.28    -1.067149    0               +1.0000
-iter:  17  00:27:20  -7.52  -4.08    -1.069497    0               +1.0000
-iter:  18  00:27:23  -8.26  -4.75    -1.070480    0               +1.0000
-iter:  19  00:27:26  -7.93  -4.78    -1.069779    0               +1.0000
-iter:  20  00:27:28  -9.72  -4.52    -1.069598    0               +1.0000
-iter:  21  00:27:31  -8.27  -4.52    -1.070664    0               +1.0000
-iter:  22  00:27:35  -8.76  -5.32    -1.070913    0               +1.0000
-iter:  23  00:27:38  -8.41  -5.29    -1.070481    0               +1.0000
+iter:   1  11:35:00  +4.23   +inf    -1.036069    0               +1.0000
+iter:   2  11:35:00  -1.81   +inf    -1.073088    0               +1.0000
+iter:   3  11:35:00  -4.37   +inf    -1.073414    0               +1.0000
+iter:   4  11:35:03  -1.92  -1.14     2.987062    0               +1.0000
+iter:   5  11:35:06  -1.46  -1.12     6.989947    0               +1.0000
+iter:   6  11:35:09  -0.92  -0.79     0.132385    0               +1.0000
+iter:   7  11:35:13  -2.67  -1.92    -1.053530    0               +1.0000
+iter:   8  11:35:16  -2.65  -1.97    -1.022293    0               +1.0000
+iter:   9  11:35:19  -2.46  -1.58    -1.054256    0               +1.0000
+iter:  10  11:35:23  -4.15  -2.97    -1.063302    0               +1.0000
+iter:  11  11:35:26  -4.86  -2.57    -1.065746    0               +1.0000
+iter:  12  11:35:29  -4.89  -2.79    -1.067844    0               +1.0000
+iter:  13  11:35:32  -5.40  -3.17    -1.069175    0               +1.0000
+iter:  14  11:35:35  -5.79  -3.55    -1.070444    0               +1.0000
+iter:  15  11:35:39  -6.19  -4.29    -1.070051    0               +1.0000
+iter:  16  11:35:44  -7.65  -4.28    -1.067149    0               +1.0000
+iter:  17  11:35:48  -7.52  -4.08    -1.069497    0               +1.0000
+iter:  18  11:35:51  -8.26  -4.75    -1.070480    0               +1.0000
+iter:  19  11:35:54  -7.93  -4.78    -1.069779    0               +1.0000
+iter:  20  11:35:57  -9.72  -4.52    -1.069598    0               +1.0000
+iter:  21  11:36:01  -8.27  -4.52    -1.070664    0               +1.0000
+iter:  22  11:36:04  -8.76  -5.32    -1.070913    0               +1.0000
+iter:  23  11:36:07  -8.41  -5.29    -1.070481    0               +1.0000
 
 Converged after 23 iterations.
 
