@@ -2,10 +2,14 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/test/")
 def hello():
-    return 'Hello Flask from ffr!'
+    return "Hello from route /test"
 
-if __name__ == '__main__':
+@app.route("/")
+def hello_root():
+    return "Hello from route / "
+
+if __name__ == "__main__":
     app.run()
 
