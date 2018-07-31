@@ -2,6 +2,10 @@ from __future__ import print_function
 
 import tensorflow as tf
 
+config = tf.ConfigProto()
+config.intra_op_parallelism_threads = 1
+config.inter_op_parallelism_threads = 1
+
 my_data = [
     [0, 1,],
     [2, 3,],
@@ -14,7 +18,7 @@ next_item = slices.make_one_shot_iterator().get_next()
 
 print(slices)
 
-sess = tf.Session()
+sess = tf.Session(config=config)
 
 while True:
     try:

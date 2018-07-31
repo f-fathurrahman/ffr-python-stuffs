@@ -3,7 +3,11 @@ from __future__ import print_function
 import numpy as np
 import tensorflow as tf
 
-sess = tf.Session()
+config = tf.ConfigProto()
+config.intra_op_parallelism_threads = 1
+config.inter_op_parallelism_threads = 1
+
+sess = tf.Session(config=config)
 
 x = tf.placeholder(tf.float32)
 y = tf.placeholder(tf.float32)

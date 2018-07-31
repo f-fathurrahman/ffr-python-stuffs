@@ -15,7 +15,11 @@ print(total)
 writer = tf.summary.FileWriter(".")
 writer.add_graph( tf.get_default_graph() )
 
-sess = tf.Session()
+config = tf.ConfigProto()
+config.intra_op_parallelism_threads = 1
+config.inter_op_parallelism_threads = 1
+
+sess = tf.Session(config=config)
 print("total = ", sess.run(total))
 
 
