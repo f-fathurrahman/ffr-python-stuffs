@@ -1,27 +1,11 @@
 from __future__ import print_function
 import numpy as np
-from copy import copy
 import matplotlib.pyplot as plt
-from numpy import pi
-from math import sqrt, log
 from scipy.interpolate import splrep, splev
 
-symbol = "Co"
+from KS_atom import *
+from GLOBAL import *
 
-exec(open("list_states.py").read())
-exec(open("orbit_transform.py").read())
-exec(open("atoms_data.py").read())
-exec(open("GLOBAL.py").read())
-
-exec(open("V_nuclear.py").read())
-exec(open("guess_density.py").read())
-exec(open("radialgrid_integrate.py").read())
-exec(open("calculate_Hartree_potential.py").read())
-exec(open("exc_PW92.py").read())
-exec(open("vxc_PW92.py").read())
-exec(open("calculate_veff.py").read())
-
-exec(open("construct_coefficients.py").read())
 exec(open("shoot.py").read())
 exec(open("solve_eigenstates.py").read())
 
@@ -43,21 +27,9 @@ for n,l,nl in list_states(maxn,maxl,occu):
     enl[nl] = 0.0
     d_enl[nl] = 0.0
 
-
-# make confinement and nuclear potentials; intitial guess for veff
-
-#conf = array([self.confinement_potential(r) for r in self.rgrid])
-conf = np.zeros(N)
-
-#nucl = array([self.V_nuclear(r) for r in self.rgrid])
-nucl = V_nuclear(Z, rgrid)
-
-veff = nucl + conf
 dens = guess_density(Z, rgrid)
-
-VHartree = np.zeros(N)
-vxc = np.zeros(N)
-exc = np.zeros(N)
+nucl = V_nuclear(Z, rgrid)
+veff = nucl + conf
 
 calculate_Hartree_potential()
 

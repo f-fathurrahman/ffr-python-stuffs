@@ -11,17 +11,33 @@
 #
 from numpy import nan
 
-atoms_data={}
+atoms_data = {}
 
-atoms_data["H"] ={"Z":1, "symbol":"H", "name":"hydrogen", "mass": 1.0079,  "R_cov":0.31,"R_vdw":1.20,"IE":0.0135,"EA":72.27 }
+atoms_data["H"] = {
+        "Z":1,
+        "symbol":"H",
+        "name":"hydrogen",
+        "mass": 1.0079, 
+        "R_cov":0.31,
+        "R_vdw":1.20,
+        "IE":0.0135,
+        "EA":72.27
+}
 
-atoms_data["He"]={"Z":2, "symbol":"He"}
+atoms_data["He"] = {
+        "Z":2,
+        "symbol":"He"
+}
 
-atoms_data["Li"]={"Z":3, "symbol":"Li", "R_cov":1.28}
+atoms_data["Li"] = {
+        "Z":3,
+        "symbol":"Li",
+        "R_cov":1.28
+}
 
-atoms_data["Be"]={"Z":4, "symbol":"Be"}
+atoms_data["Be"] = {"Z":4, "symbol":"Be"}
 
-atoms_data["B"] ={"Z":5, "symbol":"B", "name":"boron",    "mass":10.81,    "R_cov":0.84,"R_vdw":1E99,"IE":8.294, "EA":0.277}
+atoms_data["B"] = {"Z":5, "symbol":"B", "name":"boron",    "mass":10.81,    "R_cov":0.84,"R_vdw":1E99,"IE":8.294, "EA":0.277}
 
 atoms_data["C"] ={"Z":6, "symbol":"C", "name":"carbon",   "mass":12.0107,  "R_cov":0.76,"R_vdw":1.70,"IE":11.256,"EA":1.594}
 
@@ -51,7 +67,9 @@ atoms_data["K"] ={"Z":19,"symbol":"K", "name":"potassium","mass":39.0983,  "R_co
 
 atoms_data["Ti"]={"Z":22,"symbol":"Ti","name":"titanium", "mass":47.8760,  "R_cov":1.60,"R_vdw":2.15,"IE":6.825, "EA":0.078}
 
-atoms_data["Co"] = {"Z": 27, "symbol":"Co"}
+atoms_data["Co"] = {"Z": 27, "symbol": "Co"}
+
+atoms_data["Ni"] = {"Z": 28, "symbol": "Ni"}
 
 atoms_data["Zn"] = {"Z":30,"symbol":"Zn", "name":"zinc", "mass":65.38}
 
@@ -93,6 +111,7 @@ valence_orbitals["Ar"]=[]
 valence_orbitals["K"]=["4s","4p"]
 valence_orbitals["Ti"]=["3d","4s","4p"]
 valence_orbitals["Co"]=["3d","4s","4p"]
+valence_orbitals["Ni"]=["3d","4s","4p"]
 valence_orbitals["Zn"]=["3d", "4s"]
 valence_orbitals["Kr"]=[]
 valence_orbitals["Sr"]=["5s","5p","4d"]
@@ -131,6 +150,7 @@ aux=[ ["H", "",{"1s":1}],\
       ["K", "Ar",{"4s":1, "4p":0}],\
       ["Ti","Ar",{"3d":2, "4s":2, "4p":0}],\
       ["Co","Ar",{"3d":7, "4s":2, "4p":0}],\
+      ["Ni","Ar",{"3d":8, "4s":2, "4p":0}],\
       ["Zn","Ar",{"3d":10,"4s":2}],\
       ["Kr","Ar",{"3d":10,"4s":2,"4p":6}],\
       # fifth row

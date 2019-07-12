@@ -1,3 +1,34 @@
+from atoms_data import *
+import numpy as np
+from copy import copy
+
+angular_momenta = ['s','p','d','f','g','h','i','j','k','l']
+def orbit_transform(nl,string):
+    """ Transform orbitals into strings<->tuples, e.g. (2,1)<->'2p'. """
+    if string==True and type(nl)==type(''):
+        return nl #'2p'->'2p'
+    elif string==True:
+        return '%i%s' %(nl[0],angular_momenta[nl[1]]) #(2,1)->'2p'
+    elif string==False and type(nl)==type((2,1)):
+        return nl      #(2,1)->(2,1)
+    elif string==False:
+        l=angular_momenta.index(nl[1])
+        n=int(nl[0])
+        return (n,l)  # '2p'->(2,1)
+
+
+def list_states(maxn, maxl, occu):
+    """ List all potential states {(n,l,'nl')}. """
+    states = []
+    for l in range(maxl+1):
+        for n in range(1,maxn+1):
+            nl = orbit_transform((n,l),string=True)
+            if nl in occu:
+                states.append((n,l,nl))
+    return states
+
+symbol = "C"
+
 configuration = {}
 valence = []
 confinement = None
@@ -78,3 +109,18 @@ xgrid = np.linspace(0,np.log(rmax/rmin),N)
 rgrid = rmin*np.exp(xgrid)
 
 #grid = RadialGrid(rgrid)
+
+
+veff = np.zeros(N)
+VHartree = np.zeros(N)
+vxc = np.zeros(N)
+exc = np.zeros(N)
+
+# make confinement and nuclear potentials
+#conf = array([self.confinement_potential(r) for r in self.rgrid])
+conf = np.zeros(N)
+
+#nucl = array([self.V_nuclear(r) for r in self.rgrid])
+nucl = np.zeros(N)
+
+dens = np.zeros(N)

@@ -1,3 +1,6 @@
+import numpy as np
+from math import sqrt, log, pi
+
 def exc_PW92(n,der=0):
     """ Exchange-correlation with electron density n. """
     SMALL = 1E-90
@@ -31,3 +34,13 @@ def e_corr_PW92(n,der=0):
         return ( -2*c0*a1*log(1+aux**-1) \
                -2*c0*(1+a1*rs)*(1+aux**-1)**-1*(-aux**-2)\
                *2*c0*(b1/(2*sqrt(rs))+b2+3*b3*sqrt(rs)/2+2*b4*rs) )*( -(4*pi*n**2*rs**2)**-1 )
+
+def vxc_PW92(n):
+    """ Exchange-correlation potential (functional derivative of exc). """
+    eps = 1E-9*n  # ???????
+    SMALL = 1E-90
+    if n < SMALL:
+        return 0.0
+    else:
+        return exc_PW92(n) + n*exc_PW92(n,der=1)
+
