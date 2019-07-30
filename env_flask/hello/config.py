@@ -6,5 +6,5 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     DEBUG = True
-
-
+    DEVELOPMENT = True
+    ENV = "development"
