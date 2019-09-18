@@ -1,0 +1,3 @@
+#isosurface name cutoff "cubefile"
+isosurface pos 0.05 "CO_1.cube"
+jmol -s myscript.spt
