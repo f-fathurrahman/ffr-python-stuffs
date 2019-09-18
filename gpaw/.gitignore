@@ -1,3 +1,6 @@
+set_python_path.py
+
+*.out
 *.gpw
 *.cube
 *.xsf
