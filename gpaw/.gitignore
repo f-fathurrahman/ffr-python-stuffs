@@ -4,3 +4,4 @@ set_python_path.py
 *.gpw
 *.cube
 *.xsf
+*.traj
