@@ -1,7 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import numpy as np
 import tensorflow as tf
 
@@ -12,7 +8,7 @@ print(a)
 print(b)
 print(total)
 
-writer = tf.summary.FileWriter(".")
+writer = tf.summary.SummaryWriter(".")
 writer.add_graph( tf.get_default_graph() )
 
 config = tf.ConfigProto()
