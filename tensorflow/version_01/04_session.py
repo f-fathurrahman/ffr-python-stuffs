@@ -8,7 +8,7 @@ print(a)
 print(b)
 print(total)
 
-writer = tf.summary.SummaryWriter(".")
+writer = tf.summary.FileWriter(".")
 writer.add_graph( tf.get_default_graph() )
 
 config = tf.ConfigProto()
