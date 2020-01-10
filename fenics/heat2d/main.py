@@ -41,14 +41,20 @@ a, L = lhs(F), rhs(F)
 # Time stepping
 u = Function(V)
 t = 0.0
+vtkfile = File("output/solution.pvd")
+
 for n in range(Nsteps):
+    #
     t = t + dt
     u_D.t = t
     # Compute solution
     solve(a == L, u, bc)
     #
-    plot(u)
-    plt.savefig("IMG_u_{:03d}".format(n+1))
+    
+    #plot(u)
+    #plt.savefig("IMG_u_{:03d}".format(n+1))
+    vtkfile << (u, t)
+
     # Compute error at vertices
     u_e = interpolate(u_D, V)
     #
