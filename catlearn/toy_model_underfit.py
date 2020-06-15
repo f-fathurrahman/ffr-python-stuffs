@@ -30,7 +30,6 @@ target = target + noise_magnitude * np.random.randn(Ntrain, 1)
 # Generate test datapoints x
 Ntest = 513
 test = np.vstack( np.linspace(np.min(train) - 0.1, np.max(train) + 0.1, Ntest) )
-print(test.shape)
 
 # standard deviations of training data and targets
 stdx = np.std(train)
@@ -56,11 +55,11 @@ liney = my_func(linex)
 # Example 1: Biased model
 #
 
-std1 = 0.001
+sdt1 = 0.001
 w1 = 3.0 # too large width results in a biased model
 kdict = [ {"type": "gaussian", "width": w1} ]
 
-gp = GaussianProcess(kernel_list=kdict, regularization=std1,
+gp = GaussianProcess(kernel_list=kdict, regularization=sdt1,
                      train_fp=std["train"],
                      train_target=train_targets["target"],
                      optimize_hyperparameters=False)
@@ -85,8 +84,9 @@ plt.plot(test, under_prediction, "b-", lw=1, alpha=0.4)
 plt.fill_between(np.hstack(test), np.hstack(upper), np.hstack(lower), 
                  interpolate=True, color="blue", alpha=0.2)
 plt.title("Biased kernel regression model. \n" +
-          "w: {0:.3f}, r: {1:.3f}".format(w1*stdx, std1*stdy))
+          "w: {0:.3f}, r: {1:.3f}".format(w1*stdx, sdt1*stdy))
 plt.xlabel("X")
 plt.ylabel("Y")
 plt.axis("tight")
 
+plt.savefig("IMG_underfit.pdf")
