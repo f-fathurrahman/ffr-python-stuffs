@@ -89,7 +89,7 @@ class JDFTx(Calculator):
 		
 		#Run directory:
 		self.runDir = tempfile.mkdtemp(dir="./")
-		print('Set up JDFTx calculator with run files in \'' + self.runDir + '\'')
+		#print('Set up JDFTx calculator with run files in \'' + self.runDir + '\'')
 
 	########### Interface Functions ###########
 
