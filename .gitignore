@@ -2,6 +2,7 @@
 *.swo
 *~
 
+IMG_*
 TEMP_*
 LOG_*
 
