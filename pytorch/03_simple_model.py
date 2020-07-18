@@ -75,13 +75,12 @@ params = training_loop(
     t_u=t_un,
     t_c=t_c
 )
-
-t_p = model(t_un, *params)
-
-import matplotlib.pyplot as plt
-plt.clf()
-plt.plot( t_u.numpy(), t_p.detach().numpy() ) # linear
-plt.plot( t_u.numpy(), t_c.numpy(), "o")
-plt.xlabel("Temperature (°Fahrenheit)")
-plt.ylabel("Temperature (°Celsius)")
-plt.savefig("IMG_03_simple_model.pdf")
+print("params = ", params)
+#t_p = model(t_un, *params)
+#import matplotlib.pyplot as plt
+#plt.clf()
+#plt.plot( t_u.numpy(), t_p.detach().numpy() ) # linear
+#plt.plot( t_u.numpy(), t_c.numpy(), "o")
+#plt.xlabel("Temperature (°Fahrenheit)")
+#plt.ylabel("Temperature (°Celsius)")
+#plt.savefig("IMG_03_simple_model.pdf")
