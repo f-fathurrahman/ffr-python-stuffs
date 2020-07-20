@@ -2,6 +2,7 @@
 *.swo
 *~
 
+ORIG_*
 IMG_*
 TEMP_*
 LOG_*
