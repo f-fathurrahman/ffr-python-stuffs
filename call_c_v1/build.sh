@@ -1,0 +1,1 @@
+ gcc -fPIC -shared -o my_square.so my_square.c
