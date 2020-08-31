@@ -1,11 +1,8 @@
 import numpy as np
-import scipy.optimize as so
-
+import scipy.optimize
 import matplotlib.pyplot as plt
 
-np.random.seed(12)
-
-def kernel2(data1,data2,theta,wantderiv=True,measnoise=1.):
+def kernel2(data1, data2, theta, wantderiv=True, measnoise=1.):
     # Uses exp(theta) to ensure positive hyperparams
     theta = np.squeeze(theta)
     theta = np.exp(theta)
@@ -25,11 +22,7 @@ def kernel2(data1,data2,theta,wantderiv=True,measnoise=1.):
         D2 = [data2[:,d]] * np.ones((d1,d2))
         sumxy += (D1-D2)**2*theta[d+1]
 
-    k = theta[0] * np.exp(-0.5*sumxy) 
-    #k = theta[0]**2 * np.exp(-sumxy/(2.0*theta[1]**2)) 
-
-    #print k
-    #print measnoise*theta[2]**2*np.eye(d1,d2)
+    k = theta[0] * np.exp(-0.5*sumxy)
     if wantderiv:
         K = np.zeros((d1,d2,len(theta)+1))
         K[:,:,0] = k + measnoise*theta[2]*np.eye(d1,d2)
@@ -61,11 +54,12 @@ def logPosterior(theta, *args):
     k = kernel2(data,data,theta,wantderiv=False)
     L = np.linalg.cholesky(k)
     beta = np.linalg.solve(L.transpose(), np.linalg.solve(L,t))
-    logp = -0.5*np.dot(t.transpose(),beta) - np.sum(np.log(np.diag(L))) - np.shape(data)[0] /2. * np.log(2*np.pi)
+    logp = -0.5*np.dot(t.transpose(),beta) - np.sum(np.log(np.diag(L))) - \
+            np.shape(data)[0]/2.0 * np.log(2*np.pi)
     return -logp
 
 def demo_plot(filsave, theta, *args):
-    colour=np.array([0,0,1.0])
+    colour = np.array([0,0,1.0])
     faded = 1-(1-colour)/2.0
 
     X, y = args
@@ -89,32 +83,44 @@ def demo_plot(filsave, theta, *args):
 
     plt.clf()
     plt.plot(Xtest, mean,'-k')
-    #pl.plot(xstar,mean+2*np.sqrt(var),'x-')
-    #pl.plot(xstar,mean-2*np.sqrt(var),'x-')
-    #print np.shape(xstar), np.shape(mean), np.shape(var)
     plt.fill_between(np.squeeze(Xtest), np.squeeze(mean-2*np.sqrt(var)),
         np.squeeze(mean+2*np.sqrt(var)), color='0.75')
     plt.plot(X,y,'ko')
     plt.savefig(filsave)
-    #pl.axis('tight')
-    #pl.xlabel('x')1
-    #pl.ylabel('f(x)')
 
-    #covariance = np.exp(theta[0])*np.exp(-np.exp(theta[1])*Xtest**2)
-    #print np.shape(Xtest), np.shape(covariance)
-    #ax2.fill_between(np.squeeze(Xtest), np.squeeze(np.zeros(np.shape(Xtest))), np.squeeze(covariance),color='black',alpha=.2)
-    #ax2.plot(0,np.exp(theta[0]) + np.exp(theta[-1]),'o',color='black')
+def plot_data(X, y):
+    x_sort = np.copy(X.flatten())
+    y_sort = np.copy(y.flatten())
+
+    idx_sort = np.argsort(x_sort)
+    x_sort = x_sort[idx_sort]
+    y_sort = y_sort[idx_sort]
+
+    print(x_sort)
+    print(y_sort)
+
+    plt.clf()
+    plt.plot(x_sort, y_sort, marker="o")
+    plt.grid()
+    plt.savefig("IMG_data.pdf")
 
 
 
-data = np.loadtxt("data.txt")
-X = data[:,0:-1] # everything except the last column
-y = data[:,-1]   # just the last column
+#data = np.loadtxt("data.txt")
+data = np.loadtxt("data2.txt")
+X = data[:,0:-1]
+y = data[:,-1]
+
+print("X = "); print(X); print(X.shape)
+print("y = "); print(y); print(y.shape)
+
+print(np.mean(X))
+print(np.mean(y))
+
 
 args = (X, y)
 
-#theta = np.array([ 1.7657065779589087, -1.3841332550882446, -10.162222605402242])
-#theta = np.array([ 1.7999382115210827, -14.001391904643032 , -5.577578503745549])
+np.random.seed(12)
 #theta = np.array([1.65593058, -0.86208073,-1.14525511])
 theta = np.zeros(3)
 theta[0] = np.random.normal(0,1)
@@ -125,9 +131,9 @@ print("theta = ", theta)
 print("exp theta = ", np.exp(theta))
 print(logPosterior(theta, *args))
 print(gradLogPosterior(theta, *args))
-print(so.check_grad(logPosterior, gradLogPosterior, theta, *args))
+print(scipy.optimize.check_grad(logPosterior, gradLogPosterior, theta, *args))
 
-newTheta = so.fmin_cg(logPosterior, theta,
+newTheta = scipy.optimize.fmin_cg(logPosterior, theta,
     fprime=gradLogPosterior, args=args,
     gtol=1e-4,maxiter=100,disp=1)
 
@@ -135,7 +141,7 @@ print("theta = ", theta)
 print("newTheta = ", newTheta)
 print(newTheta, logPosterior(newTheta, *args))
 
-K = kernel2(X,X,newTheta,wantderiv=False)
+K = kernel2(X, X, newTheta, wantderiv=False)
 L = np.linalg.cholesky(K) 
 
 β = np.linalg.solve(L.transpose(), np.linalg.solve(L,y))
