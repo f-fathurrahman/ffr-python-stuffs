@@ -17,4 +17,4 @@ for zeta in [0.0, 0.5, 0.8, 1.0, 1.2]:
 
 plt.grid()
 plt.legend()
-plt.savefig("TEMP_ex_step_response.pdf")
+plt.savefig("IMG_ex_step_response.pdf")
