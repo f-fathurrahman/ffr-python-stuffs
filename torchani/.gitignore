@@ -2,3 +2,4 @@ my_torchani
 runs
 *.pt
 STRUCT_*
+*.traj

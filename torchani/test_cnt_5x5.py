@@ -47,7 +47,11 @@ def printenergy(a=atoms):
 # with a time step of 1 fs, the temperature 300K and the friction
 # coefficient to 0.02 atomic units.
 dyn = Langevin(atoms, 1 * units.fs, 300 * units.kB, 0.2)
-dyn.attach(printenergy, interval=50)
+dyn.attach(printenergy, interval=1)
+
+from ase.io.trajectory import Trajectory
+traj = Trajectory('cnt_5x5.traj', 'w', atoms)
+dyn.attach(traj.write, interval=1)
 
 # Now run the dynamics:
 print("Beginning dynamics...")
