@@ -9,58 +9,50 @@ print(dataset.shape)
 X = dataset[:,[1,3]]
 Y = dataset[:,4]
 
-# Plotting  stuffs
-#idx_fake = [np.where(Y==1)]
-#idx_real = [np.where(Y==0)]
-#params = {"mathtext.default" : "regular"}
-#plt.rcParams.update(params)
-#plt.scatter(X[idx_real,0], X[idx_real,1], alpha=1.0, marker="^", edgecolor="black")
-#plt.scatter(X[idx_fake,0], X[idx_fake,1], alpha=1.0, marker="o", edgecolor="black")
-#plt.title("Real and faked banknotes")
-#plt.xlabel("$x_1$")
-#plt.ylabel("$x_2$")
-#plt.legend( ("faked", "real"), loc="lower left", fontsize=10)
-#plt.savefig("IMG_01_banknote.pdf")
-
-
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
+from tensorflow.keras.utils import to_categorical
 from tensorflow.keras import optimizers
 
+# Definition of the network
 model = Sequential()
-model.add( Dense(1, batch_input_shape=(None,2), activation="sigmoid") )
+model.add( Dense(8, batch_input_shape=(None,2), activation="sigmoid") )
+model.add( Dense(2, activation='softmax'))
 sgd = optimizers.SGD(lr=0.15)
 
 model.compile(
-    loss="binary_crossentropy",
+    loss="categorical_crossentropy",
     optimizer=sgd,
     metrics=["accuracy"]
 )
 
 print(model.summary())
 
+# Transform Y=0 to (1,0) and Y=1 to (0,1)
+Y_c = to_categorical(Y, 2)
+
 # training of the model␣
 history = model.fit(
-    X, Y,epochs=400,
+    X, Y_c,epochs=400,
     batch_size=128,
     verbose=1
 )
 
-#plt.clf()
-#plt.plot(history.history["accuracy"])
-#plt.title("Model Accuracy")
-#plt.xlabel("epoch")
-#plt.ylabel("accuracy")
-#plt.legend(["train"], loc="lower right")
-#plt.savefig("IMG_01_training_accuracy.pdf")
+plt.clf()
+plt.plot(history.history["accuracy"])
+plt.title("Model Accuracy")
+plt.xlabel("epoch")
+plt.ylabel("accuracy")
+plt.legend(["train"], loc="lower right")
+plt.savefig("IMG_02_training_accuracy.pdf")
 
-#plt.clf()
-#plt.plot(history.history["loss"])
-#plt.title("Model Loss")
-#plt.xlabel("epoch")
-#plt.ylabel("loss")
-#plt.legend(["train"], loc="lower right")
-#plt.savefig("IMG_01_training_loss.pdf")
+plt.clf()
+plt.plot(history.history["loss"])
+plt.title("Model Loss")
+plt.xlabel("epoch")
+plt.ylabel("loss")
+plt.legend(["train"], loc="lower right")
+plt.savefig("IMG_02_training_loss.pdf")
 
 def plot_decision_boundary(X, Y, model, t):
     print("Making grid ...", end="")
@@ -106,5 +98,5 @@ def plot_decision_boundary(X, Y, model, t):
     plt.ylabel("$x_2$")
 
 plot_decision_boundary(X, Y, model, "fcnn separation without hidden layer")
-plt.savefig("IMG_01_decision_boundary.pdf")
+plt.savefig("IMG_02_decision_boundary.pdf")
 
