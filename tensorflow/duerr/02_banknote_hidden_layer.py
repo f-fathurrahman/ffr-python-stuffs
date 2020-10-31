@@ -62,16 +62,19 @@ def plot_decision_boundary(X, Y, model, t):
     print("... done")
 
     print("Doing prediction ...", end="", flush=True)
-    p = np.array([
-        model.predict( np.reshape(np.array([l1,l2]), (1,2)) ) for l1,l2 in \
-        zip( np.ravel(X1grid), np.ravel(X2grid) )
-    ])
-    print("... done")
+    in1 = np.zeros( (50*50,2) )
+    ip = 0
+    for j in range(50):
+        for i in range(50):
+            in1[ip,0] = x1[i]
+            in1[ip,1] = x2[j]
+            ip = ip + 1
+    p = model.predict(in1)[:,1] # pick class 1
+    p = np.reshape(p, X1grid.shape)
+    print("... done", flush=True)
 
-    print(p.shape)
-    if len(p.shape) == 3 and p.shape[2] == 2:
-        p = p[:,:,1] # pick p for class 1 if there are more than 2 classes
-    p = np.reshape(p,X1grid.shape)
+    print("Shape of p: ", end=" ", flush=True)
+    print(p.shape, flush=True)
 
     params = {"mathtext.default": "regular" } #Nicer Plotting
     plt.rcParams.update(params)
@@ -80,23 +83,23 @@ def plot_decision_boundary(X, Y, model, t):
     plt.figure(figsize=(16,4))
 
     plt.subplot(1, 2, (1))
-    cp = plt.contourf(X1grid, X2grid, p,cmap="viridis")
+    cp = plt.contourf(X1grid, X2grid, p, cmap="viridis")
     plt.colorbar(cp)
     plt.title(t)
     plt.xlabel("$x_1$")
     plt.ylabel("$x_2$")
 
     plt.subplot(1, 2, (2))
-    cp = plt.contourf(X1grid, X2grid, p,cmap="viridis")
+    cp = plt.contourf(X1grid, X2grid, p, cmap="viridis")
     plt.colorbar(cp)
     idx_f = [np.where(Y==1)]
     idx_r = [np.where(Y==0)]
-    plt.scatter(X[idx_r,0],X[idx_r,1], alpha=1.0,marker="^",edgecolor="black")
-    plt.scatter(X[idx_f,0],X[idx_f,1], alpha=1.0,marker="o",edgecolor="black")
+    plt.scatter(X[idx_r,0], X[idx_r,1], alpha=1.0, marker="^", edgecolor="black")
+    plt.scatter(X[idx_f,0], X[idx_f,1], alpha=1.0, marker="o", edgecolor="black")
     plt.title(t)
     plt.xlabel("$x_1$")
     plt.ylabel("$x_2$")
 
-plot_decision_boundary(X, Y, model, "fcnn separation without hidden layer")
+plot_decision_boundary(X, Y, model, "fcnn separation hidden layer")
 plt.savefig("IMG_02_decision_boundary.pdf")
 
