@@ -3,8 +3,9 @@
 #
 
 import numpy as np
-import tensorchem.tucker3d as tucker3d
-from tensorchem.tucker3d.cross.cross3d import cross3d
+from cross3d import cross3d
+#import tensorchem.tucker3d as tucker3d
+#from tensorchem.tucker3d.cross.cross3d import cross3d
 
 N = 2**12
 M = 2*N-1
