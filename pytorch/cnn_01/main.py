@@ -8,7 +8,7 @@ torch.manual_seed(RANDOM_SEED)
 
 # Device configuration
 #device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-device = 'cpu'
+device = 'cuda'
 
 # Hyper parameters
 num_epochs = 5
@@ -17,23 +17,31 @@ batch_size = 100
 learning_rate = 0.001
 
 # MNIST dataset
-train_dataset = torchvision.datasets.MNIST(root='../DATASET/',
-                                           train=True, 
-                                           transform=transforms.ToTensor(),
-                                           download=False)
+train_dataset = torchvision.datasets.MNIST(
+    root='../DATASET/',
+    train=True, 
+    transform=transforms.ToTensor(),
+    download=False
+)
 
-test_dataset = torchvision.datasets.MNIST(root='../DATASET',
-                                          train=False, 
-                                          transform=transforms.ToTensor())
+test_dataset = torchvision.datasets.MNIST(
+    root='../DATASET',
+    train=False, 
+    transform=transforms.ToTensor()
+)
 
 # Data loader
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
-                                           batch_size=batch_size, 
-                                           shuffle=True)
+train_loader = torch.utils.data.DataLoader(
+    dataset=train_dataset,
+    batch_size=batch_size, 
+    shuffle=True
+)
 
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
-                                          batch_size=batch_size, 
-                                          shuffle=False)
+test_loader = torch.utils.data.DataLoader(
+    dataset=test_dataset,
+    batch_size=batch_size, 
+    shuffle=False
+)
 
 # Convolutional neural network (two convolutional layers)
 class ConvNet(nn.Module):
@@ -85,7 +93,8 @@ for epoch in range(num_epochs):
                    .format(epoch+1, num_epochs, i+1, total_step, loss.item()))
 
 # Test the model
-model.eval()  # eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance)
+# eval mode (batchnorm uses moving mean/variance instead of mini-batch mean/variance)
+model.eval()
 with torch.no_grad():
     correct = 0
     total = 0

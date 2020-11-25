@@ -22,23 +22,31 @@ batch_size = 100
 learning_rate = 0.001
 
 # MNIST dataset 
-train_dataset = torchvision.datasets.MNIST(root='../DATASET', 
-                                           train=True, 
-                                           transform=transforms.ToTensor(),  
-                                           download=False)
+train_dataset = torchvision.datasets.MNIST(
+  root='../DATASET', 
+  train=True, 
+  transform=transforms.ToTensor(),  
+  download=False
+)
 
-test_dataset = torchvision.datasets.MNIST(root='../DATASET', 
-                                          train=False, 
-                                          transform=transforms.ToTensor())
+test_dataset = torchvision.datasets.MNIST(
+  root='../DATASET', 
+  train=False, 
+  transform=transforms.ToTensor()
+)
 
 # Data loader
-train_loader = torch.utils.data.DataLoader(dataset=train_dataset, 
-                                           batch_size=batch_size, 
-                                           shuffle=True)
+train_loader = torch.utils.data.DataLoader(
+  dataset=train_dataset, 
+  batch_size=batch_size, 
+  shuffle=True
+)
 
-test_loader = torch.utils.data.DataLoader(dataset=test_dataset, 
-                                          batch_size=batch_size, 
-                                          shuffle=False)
+test_loader = torch.utils.data.DataLoader(
+  dataset=test_dataset, 
+  batch_size=batch_size, 
+  shuffle=False
+)
 
 # Fully connected neural network with one hidden layer
 class NeuralNet(nn.Module):

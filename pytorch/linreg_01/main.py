@@ -21,14 +21,6 @@ plt.clf()
 plt.plot(x_train, y_train, linewidth=0, marker="o")
 plt.savefig("IMG_data.pdf")
 
-# Toy dataset
-#x_train = np.array([[3.3], [4.4], [5.5], [6.71], [6.93], [4.168], 
-#                    [9.779], [6.182], [7.59], [2.167], [7.042], 
-#                    [10.791], [5.313], [7.997], [3.1]], dtype=np.float32)
-#y_train = np.array([[1.7], [2.76], [2.09], [3.19], [1.694], [1.573], 
-#                    [3.366], [2.596], [2.53], [1.221], [2.827], 
-#                    [3.465], [1.65], [2.904], [1.3]], dtype=np.float32)
-
 # Convert data to tensor
 x_train_ = np.reshape(x_train, (Ndata,1))
 y_train_ = np.reshape(y_train, (Ndata,1))
@@ -58,8 +50,8 @@ for epoch in range(num_epochs):
     
     # Backward and optimize
     optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
+    loss.backward()   # calculate loss function derivative
+    optimizer.step()  # will update the model parameters
     
     if (epoch+1) % 5 == 0:
         print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))
