@@ -10,7 +10,7 @@ torch.manual_seed(RANDOM_SEED)
 
 # Hyper-parameters 
 input_size = 28 * 28  # 784
-num_classes = 10
+num_classes = 10 # angka 0-9
 num_epochs = 5
 batch_size = 100
 learning_rate = 0.001
@@ -33,7 +33,7 @@ test_dataset = torchvision.datasets.MNIST(
 print("test_dataset")
 print(test_dataset.data.shape)
 
-# Data loader (input pipeline)
+# Data loader (input pipeline), as iterator (bisa digunakan dalam for loop)
 train_loader = torch.utils.data.DataLoader(
     dataset=train_dataset, 
     batch_size=batch_size,
@@ -63,11 +63,11 @@ optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
 # Train the model
 total_step = len(train_loader)
-print("total_step: ", total_step)
 for epoch in range(num_epochs):
+    # over over dataset
     for i, (images, labels) in enumerate(train_loader):
         # Reshape images to (batch_size, input_size)
-        images = images.reshape(-1, input_size)
+        images = images.reshape(-1, input_size) # dari matriks menjadi vektor
 
         # Forward pass
         outputs = model(images)
@@ -76,10 +76,10 @@ for epoch in range(num_epochs):
         # Backward and optimize
         optimizer.zero_grad()
         loss.backward()
-        optimizer.step()
+        optimizer.step() # update weight
         
         if (i+1) % 100 == 0:
-            print ('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}' 
+            print ('Epoch [{}/{}], Step/Batch [{}/{}], Loss: {:.4f}' 
                    .format(epoch+1, num_epochs, i+1, total_step, loss.item()))
 
 # Test the model

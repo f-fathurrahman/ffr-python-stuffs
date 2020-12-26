@@ -33,12 +33,12 @@ Nhidden = 5
 # Linear model + activation, using torch.nn subclass
 # Beware accessing global vars
 class MyNet(nn.Module):
-
-    def __init__(self):
+    # constructor
+    def __init__(self, Nhidden_):
         super().__init__()
-        self.hidden_linear = nn.Linear(input_size, Nhidden)
+        self.hidden_linear = nn.Linear(input_size, Nhidden_)
         self.hidden_activation = nn.Tanh()
-        self.output_linear = nn.Linear(Nhidden, output_size)
+        self.output_linear = nn.Linear(Nhidden_, output_size)
 
     def forward(self, inp):
         y1 = self.hidden_linear(inp)
@@ -47,7 +47,7 @@ class MyNet(nn.Module):
         return y3
 
 
-model = MyNet()
+model = MyNet(10)
 
 num_epochs = 500
 learning_rate = 0.1

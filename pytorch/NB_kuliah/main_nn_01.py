@@ -10,8 +10,8 @@ torch.manual_seed(RANDOM_SEED)
 
 # Device configuration
 #device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-device = 'cpu'
-#device = 'cuda'
+#device = 'cpu'
+device = 'cuda'
 
 # Hyper-parameters 
 input_size = 784
@@ -52,8 +52,8 @@ test_loader = torch.utils.data.DataLoader(
 class NeuralNet(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
         super(NeuralNet, self).__init__()
-        self.fc1 = nn.Linear(input_size, hidden_size) 
-        self.relu = nn.ReLU()
+        self.fc1 = nn.Linear(input_size, hidden_size)  # callable
+        self.relu = nn.ReLU() # try with tanh
         self.fc2 = nn.Linear(hidden_size, num_classes)  
     
     def forward(self, x):
@@ -67,6 +67,7 @@ model = NeuralNet(input_size, hidden_size, num_classes).to(device)
 # Loss and optimizer
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)  
+#optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
 # Train the model
 total_step = len(train_loader)

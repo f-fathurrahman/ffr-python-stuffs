@@ -28,8 +28,8 @@ inputs = torch.tensor(x_train_, dtype=torch.float32)
 targets = torch.tensor(y_train_, dtype=torch.float32)
 
 # Hyper-parameters
-input_size = 1
-output_size = 1
+input_size = 1 # dimensionality of input
+output_size = 1 # dimensionality of ouput
 num_epochs = 200
 learning_rate = 0.1
 
@@ -39,6 +39,7 @@ model = nn.Linear(input_size, output_size)
 # Loss and optimizer
 criterion = nn.MSELoss() # mean square error
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate) # stochastic gradient descent
+#optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate) # stochastic gradient descent
 
 # Train the model
 for epoch in range(num_epochs):
@@ -50,7 +51,7 @@ for epoch in range(num_epochs):
     # Backward and optimize
     optimizer.zero_grad()
     loss.backward()   # calculate loss function derivative
-    optimizer.step()  # will update the model parameters
+    optimizer.step()  # will update the model parameters: w = w + α*y'
     
     if (epoch+1) % 5 == 0:
         print ('Epoch [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, loss.item()))

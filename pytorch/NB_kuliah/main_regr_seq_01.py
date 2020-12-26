@@ -35,7 +35,7 @@ Nhidden = 5
 # Linear model + activation
 model = nn.Sequential(
     nn.Linear(input_size, Nhidden),
-    nn.Tanh(),
+    nn.Tanh(), # nonlinearity
     nn.Linear(Nhidden, output_size)
 )
 
