@@ -15,6 +15,7 @@ plt.legend()
 plt.ylabel("Ez")
 plt.xlabel("z")
 plt.grid(True)
+plt.tight_layout()
 plt.savefig("IMG_worksheet_6_1_plot_Ez.png", dpi=150)
 
 z = 0.5
@@ -35,6 +36,7 @@ plt.legend()
 plt.ylabel("Ez")
 plt.xlabel("z")
 plt.grid(True)
+plt.tight_layout()
 plt.savefig("IMG_worksheet_6_1_plot_Ez_L.png", dpi=150)
 
 print()

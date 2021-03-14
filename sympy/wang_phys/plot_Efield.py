@@ -50,5 +50,6 @@ ax.set_ylabel('$y$')
 ax.set_xlim(-2,2)
 ax.set_ylim(-2,2)
 ax.set_aspect('equal')
+plt.tight_layout()
 plt.savefig("IMG_E_field_" + str(nq) + ".png", dpi=150)
 

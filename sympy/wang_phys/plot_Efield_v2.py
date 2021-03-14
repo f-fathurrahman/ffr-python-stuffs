@@ -18,8 +18,8 @@ X, Y = np.meshgrid(x, y)
 charges = [] # list berisi muatan dan posisi x dan y muatan
 # x,y dibatasi pada (-2,2)
 charges.append( (1.0, (-1.0, 0.0) ) )
-charges.append( (1.0,  (1.0, 0.0) ) )
-charges.append( (-1.0,  (0.0, 1.0) ) )
+charges.append( (2.0,  (1.0, 0.0) ) )
+#charges.append( (-1.0,  (0.0, 1.0) ) )
 
 Ex = np.zeros((ny, nx))
 Ey = np.zeros((ny, nx))
@@ -47,5 +47,6 @@ ax.set_ylabel('$y$')
 ax.set_xlim(-2,2)
 ax.set_ylim(-2,2)
 ax.set_aspect('equal')
+plt.tight_layout()
 plt.savefig("IMG_E_field_v2.png", dpi=150)
 
