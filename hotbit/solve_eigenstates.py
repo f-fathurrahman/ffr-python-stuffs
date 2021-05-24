@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 def solve_eigenstates(iteration,itmax_eigen=100):
     """
     Solve the eigenstates for given effective potential.
@@ -45,8 +47,8 @@ def solve_eigenstates(iteration,itmax_eigen=100):
             u[0:2] = rgrid[0:2]**(l+1)
 
             if not( c0[-2]<0 and c0[-1]<0 ):
-                pl.plot(c0)
-                pl.show()
+                plt.plot(c0)
+                plt.show()
 
             assert c0[-2]<0 and c0[-1]<0
 
