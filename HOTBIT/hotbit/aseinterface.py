@@ -137,7 +137,11 @@ class Hotbit(Output):
         from copy import copy
         import os
 
-        if gamma_cut!=None: gamma_cut=gamma_cut/Bohr
+        # Convert gamma_cut from Bohr to angstrom
+        if gamma_cut != None:
+            print("gamma_cut = ", gamma_cut)
+            gamma_cut = gamma_cut/Bohr
+            print("gamma_cut = ", gamma_cut)
 
         self.__dict__={ 'parameters':parameters,
                         'elements':elements,
@@ -176,6 +180,7 @@ class Hotbit(Output):
             self.set(key,internal0[key])
         #self.set_text(self.txt)
         #self.timer=Timer('Hotbit',txt=self.get_output())
+        print("End of __init__ in Hotbit class")
 
 
     def __del__(self):
@@ -382,6 +387,7 @@ class Hotbit(Output):
 
     def solve_ground_state(self,atoms):
         """ If atoms moved, solve electronic structure. """
+        print("\nENTER Hotbit.solve_ground_state")
         if not self.init:
             assert type(atoms)!=type(None)
             self._initialize(atoms)
@@ -402,10 +408,12 @@ class Hotbit(Output):
             #    atoms.set_charges(-self.st.get_dq())
         else:
             pass
+        print("EXIT  Hotbit.solve_ground_state")
 
 
     def _initialize(self,atoms):
         """ Initialization of hotbit. """
+        print("ENTER Hotbit._initialize")
         if not self.init:
             self.set_text(self.txt)
             self.timer=Timer('Hotbit',txt=self.get_output())
@@ -437,6 +445,7 @@ class Hotbit(Output):
         if not self.init:
             self.init=True
             self.greetings()
+        print("EXIT  Hotbit._initialize")
 
 
     def calculation_required(self,atoms,quantities):
@@ -451,6 +460,7 @@ class Hotbit(Output):
 
     def get_potential_energy(self,atoms,force_consistent=False):
         """ Return the potential energy of present system. """
+        print("\nENTER Hotbit.get_potential_energy")
         if force_consistent:
             raise NotImplementedError
         if self.calculation_required(atoms,['energy']):
@@ -463,6 +473,7 @@ class Hotbit(Output):
             self.epot = ebs + ecoul + erep + epp - self.el.efree*Hartree
             self.stop_timing('energy')
             self.el.set_solved('energy')
+        print("EXIT  Hotbit.get_potential_energy")
         return self.epot.copy()
 
 
@@ -605,11 +616,13 @@ class Hotbit(Output):
 
     def set_atoms(self,atoms):
         """ Initialize the calculator for given atomic system. """
+        print("ENTER Hotbit.set_atoms")
         if self.init==True and atoms.get_chemical_symbols()!=self.el.atoms.get_chemical_symbols():
             raise RuntimeError('Calculator initialized for %s. Create new calculator for %s.'
                                %(self.el.get_name(),mix.parse_name_for_atoms(atoms)))
         else:
             self._initialize(atoms)
+        print("EXIT  Hotbit.set_atoms")
 
 
     def get_occupation_numbers(self,kpt=0):

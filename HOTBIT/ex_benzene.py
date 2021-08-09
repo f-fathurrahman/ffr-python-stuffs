@@ -13,7 +13,10 @@ calc = Hotbit(SCC=True, width=0.05, txt='LOG_benzene',
     mixer={'name': 'Pulay', 'mixing_constant': 0.2, 'memory':4}
 )
 #calc = Hotbit(SCC=False, width=0.05, txt=None)
+
+print("\nENTER Atoms.set_calculator")
 atoms.set_calculator(calc)
+print("EXIT  Atoms.set_calculator")
 
 Etot = atoms.get_potential_energy()
 print("Etot = ", Etot)
