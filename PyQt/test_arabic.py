@@ -12,7 +12,7 @@ class MyWindow(QWidget):
         self.setWindowTitle('Demo windows')
         
         quit = QPushButton(btn_label, self)
-        quit.setGeometry(10, 10, 70, 40)
+        quit.setGeometry(100, 100, 100, 400)
         
         font = quit.font()
 
