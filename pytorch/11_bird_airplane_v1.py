@@ -61,7 +61,7 @@ learning_rate = 1e-2
 optimizer = optim.SGD(model.parameters(), lr=learning_rate)
 loss_fn = nn.NLLLoss()
 
-n_epochs = 100
+n_epochs = 10
 for epoch in range(n_epochs):
     for img, label in cifar2:
         out = model(img.view(-1).unsqueeze(0))
@@ -69,5 +69,5 @@ for epoch in range(n_epochs):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
-    print("Epoch: %d, Loss: %f" % (epoch, float(loss)))
+    print("Epoch: %5d, Loss: %10.5f" % (epoch, float(loss)))
 
